@@ -1,0 +1,8 @@
+- transferProxyLine.jsp
+  - 模組化整個jsp 
+  - [x] 輸入cb幾
+- hidden.jsp - personal_tab1
+  - [x]  增加秒數 點其他地方會卡
+     - 迴圈變數再點的時候因為變數在裡面所以++永遠會=1，應該拿出來當區域變數
+  - 照順序按才給按 
+  - 一個div放紀錄

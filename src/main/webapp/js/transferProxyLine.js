@@ -1,5 +1,5 @@
 $(function(){
-    for(var i=1;i<=3;i++){
+    for(var i=1;i<=5;i++){
         if ($("#selectSql"+i).text().trim() === "") {
             $("#copy"+i).hide();
         }
@@ -8,7 +8,14 @@ $(function(){
 
 // 功能说明
 $(".transferProxyLine_functionDescription").click(function(){
-    var text = '<div style="margin-left: 70px;text-align: left;">clear all: 清除所有 input 跟 sql<br>step1: 查询step2要用到的资讯<br>step2: 更新代理相关资讯<br>step3: 检查更新代理相关资讯是否正确<br>close: 关闭当前书签<br></div>';
+    var text = '<div style="margin-left: 30px;text-align: left;">'
+//    clear all: 清除所有 input 跟 sql<br>
+            +'转移代理线-step1: 查询step2要用到的资讯<br>'
+            +'转移代理线-step2: 更新代理相关资讯<br>'
+            +'转移代理线-step3: 检查更新代理相关资讯是否正确<br>'
+            +'代理线底下未登入: 代理线xxx底下xx天未登入的下级账号的相关资讯<br>'
+            +'代理线底下未投注: 代理线xxx底下xx天未投注的下级账号的相关资讯<br>'
+            +'close: 关闭当前书签<br></div>';
     Swal.fire(
       '',
       text,
@@ -17,7 +24,11 @@ $(".transferProxyLine_functionDescription").click(function(){
 });
 
 $(".transferProxyLine_functionDescription_inside").click(function(){
-    var text = '<div style="margin-left: 70px;text-align: left;">clear: 清除当前书签 input 跟 sql<br>带入测试值: 带入测试值<br>go: 产生sql<br>copy: 克隆sql<br></div>';
+    var text = '<div style="margin-left: 70px;text-align: left;">'
+            +'clear: 清除当前书签 input 跟 sql<br>'
+            +'带入测试值: 带入测试值<br>'
+            +'go: 产生sql<br>'
+            +'copy: 克隆sql<br></div>';
     Swal.fire(
       '',
       text,
@@ -84,7 +95,7 @@ function showErrMsg(){
 }
 
 // 当前书签的 copy 跟 clear
-for(var i=1;i<=3;i++){
+for(var i=1;i<=5;i++){
     /**
      * 使用 IIFE (立即执行函数表达式) 捕获了每次迭代的 i 值，将其传递给匿名函数，从而在每个按钮点击事件处理程序中使用正确的 i 值。
      * 这将确保每个按钮都能正常工作，而不会受到闭包的影响。
@@ -100,6 +111,7 @@ for(var i=1;i<=3;i++){
             $("#selectSql"+index).html('');
             $("#copy"+index).hide();
             $('.step'+index+'Div input').val('');
+            $('.proxyLine'+index+'Div input').val('');
         });
     })(i);
 }
@@ -121,12 +133,10 @@ function selectText(e){
 }
 
 $("#clearall").click(function(){
-    $("#selectSql1").html('');
-    $("#copy1").hide();
-    $("#selectSql2").html('');
-    $("#copy2").hide();
-    $("#selectSql3").html('');
-    $("#copy3").hide();
+    for(var i=1;i<=3;i++){
+        $("#selectSql"+i).html('');
+        $("#copy"+i).hide();
+    }
     $('input').val('').css("background-color","white");
     showClearMsg();
     openTabs(event, '');
@@ -161,9 +171,9 @@ $("#test3").click(function(){
 
 
 // sql
-$("#step1").click(function(){
+$("#transferProxyLineStep1").click(function(){
     var data = {
-        step: "step1",
+        step: "transferProxyLineStep1",
         cb1: $("#cb1").val(),
         sitepath1: $("#sitepath1").val(),
         superior1: $("#superior1").val(),
@@ -186,9 +196,9 @@ $("#step1").click(function(){
     }
 });
 
-$("#step2").click(function(){
+$("#transferProxyLineStep2").click(function(){
     var data = {
-        step: "step2",
+        step: "transferProxyLineStep2",
         cb2: $("#cb2").val(),
         sitepath2: $("#sitepath2").val(),
         accountNamePath: $("#accountNamePath").val(),
@@ -216,9 +226,9 @@ $("#step2").click(function(){
     }
 });
 
- $("#step3").click(function(){
+ $("#transferProxyLineStep3").click(function(){
      var data = {
-        step: "step3",
+        step: "transferProxyLineStep3",
         cb3: $("#cb3").val(),
         sitepath3: $("#sitepath3").val(),
         superior3: $("#superior3").val(),

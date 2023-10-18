@@ -16,6 +16,19 @@ public class TransferProxyLine {
         String superior = (String) map.get("superior");
         String subordinate = (String) map.get("subordinate");
 
+//        String sql = "--1\n" +
+//                "SELECT\n" +
+//                "CASE LOGIN_NAME\n" +
+//                "WHEN '"+subordinate+"' THEN 1 --上級帳號\n" +
+//                "ELSE 2\n" +
+//                "END AS sort,\n" +
+//                "a.PLATFORM_ID, a.ID, a.LOGIN_NAME, a.ACCOUNT_NAME_PATH, a.ACCOUNT_ID_PATH ,s.SITE_PATH\n" +
+//                "FROM AUTH_ACCOUNT a\n" +
+//                "LEFT JOIN PUB_SITE s ON a.PLATFORM_ID = s.ID\n" +
+//                "WHERE s.SITE_PATH = '"+station+"' AND LOGIN_NAME IN (\n" +
+//                "'" + superior + "','"+subordinate+"'\n" +
+//                ")";
+
         return "幫 " + cb + "<br>"
                 + "```sql<br>"
                 + "--1<br>"

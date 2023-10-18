@@ -49,9 +49,15 @@ $("#adjustClear1").click(function(){
 
 // 带入测试值
 $("#adjustTest1").click(function(){
-    $("#adjustStr").val(' int page, int pageSize,&nbsp;&nbsp;'
-                              +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String createDatTime, String createDatTimeEnd, Integer accountId,String loteryId,String cpLoteryId&nbsp;&nbsp;&nbsp;'
-                              +'&nbsp;&nbsp;&nbsp;,String status,boolean isNew,Integer lastId,String tradeType');
+    $("#adjustStr").val(' int page, int pageSize,'
+                              +'          ,String createDatTime, String createDatTimeEnd, Integer accountId,String loteryId,String cpLoteryId'
+                              +'              , String status,boolean isNew,Integer lastId,String tradeType');
+});
+$("#adjustTest2").click(function(){
+    $("#adjustStr").val(' String customSettingId = request.getParameter("customSettingId");'
+                                  		+'            String remarks = request.getParameter("remarks").trim();'
+                                  		+'            String result = request.getParameter("result");'
+                                  		+'          String ids = request.getParameter("ids");');
 });
 
 $("#adjust").click(function(){

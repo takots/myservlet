@@ -97,6 +97,3 @@ $("#timer").click(function(){
     $("#timer").text(timer);
     countdownStart();
 })
-
-// 記錄區
-// 依照數字按才給按
