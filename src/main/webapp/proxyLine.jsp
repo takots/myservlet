@@ -3,6 +3,7 @@
     <h3>代理线xxx底下xx天未登入的下级账号</h3>
 
     <div class="border">
+        <button type="button" class="proxyLine_functionDescription_inside btn btn-info mb-1">功能说明</button>
         <button id="clear4" type="button" class="btn btn-danger mb-1">clear</button>
         <button id="test4" type="button" class="btn btn-primary mb-1">带入测试值</button><br>
         測試: CB5 B136 代理线sszy底下
@@ -16,15 +17,19 @@
             <div class="form-group row"><label class="col-sm-2 col-form-label">站点路径(SITE_PATH): </label><input type="text" name="sitepath" id="sitepath4"><br></div>
             <div class="form-group row"><label class="col-sm-2 col-form-label">上级:               </label><input type="text" name="superior" id="superior4"><br></div>
             <div class="form-group row"><label class="col-sm-2 col-form-label">VIP:               </label><input type="text" name="vip" id="vip4"><br></div>
-            <div class="form-group row"><label class="col-sm-2 col-form-label">時間範圍(超过多少天):  </label><input type="text" name="date" id="date4"><br></div>
-             <div class="row">
-                <div class="form-group col">
-                    <label class="col-form-label">時間範圍(區間):</label>
+            <div class="form-group row"><label class="col-sm-2 col-form-label">時間範圍0:  </label><input type="text" name="date" id="date4M"><br></div>
+            <div class="form-group row"><label class="col-sm-2 col-form-label">時間範圍1:  </label><input type="text" name="date" id="date4D"><br></div>
+            <div class="row">
+                <div class="form-group col-2">
+                    <label class="col-form-label">時間範圍2(區間):</label>
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-1">
+                    <button id="clearRangeDate" type="button" class="btn btn-danger mb-1">clear Range</button>
+                </div>
+                <div class="form-group col-2">
                     <input type="date" class="form-control" id="date4S" name="date">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-2">
                     <input type="date" class="form-control" id="date4E" name="date">
                 </div>
             </div>

@@ -19,6 +19,9 @@ import java.util.Map;
 public class HelloWorldServlet extends HttpServlet {
     TransferProxyLine transferProxyLine = new TransferProxyLine();
     ProxyLine proxyLine = new ProxyLine();
+
+    PlatformAccount platformAccount = new PlatformAccount();
+    MemberAccount memberAccount = new MemberAccount();
     GetIp getIp = new GetIp();
     SomeCookie someCookie = new SomeCookie();
 
@@ -46,6 +49,59 @@ public class HelloWorldServlet extends HttpServlet {
         out.close();
     }
 
+    private void memberAccountFreeze(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");//对返回浏览器数据没啥用，不过建议添加
+        response.setHeader("Content-type", "text/html;charset=UTF-8");//告知浏览器编码方式;
+        response.setCharacterEncoding("UTF-8"); //向前台的页面输出结果的输出流
+        Map<String, Object> map = new HashMap<>();
+        String step = request.getParameter("step");
+        step = step.replace("memberAccount", "").toLowerCase();
+        String selectSql = "";
+        selectSql = "<pre><code&nbsp;class=\"sql-code\">";
+
+        if(step.contains("freeze")) {
+            String cb = request.getParameter("MAcb1").trim();
+            String sitepath = request.getParameter("MAsitepath1").trim();
+            String superior = request.getParameter("MAloginname1").trim();
+
+            map.put("cb" ,cb);
+            map.put("sitepath" ,sitepath);
+            map.put("superior" ,superior);
+            selectSql += memberAccount.freeze(map);
+        }
+
+        PrintWriter out = response.getWriter();
+        selectSql += "</code></pre>";
+        out.write(selectSql);
+        out.close();
+    }
+
+    private void platformAccountFreeze(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");//对返回浏览器数据没啥用，不过建议添加
+        response.setHeader("Content-type", "text/html;charset=UTF-8");//告知浏览器编码方式;
+        response.setCharacterEncoding("UTF-8"); //向前台的页面输出结果的输出流
+        Map<String, Object> map = new HashMap<>();
+        String step = request.getParameter("step");
+        step = step.replace("platformAccount", "").toLowerCase();
+        String selectSql = "";
+        selectSql = "<pre><code&nbsp;class=\"sql-code\">";
+
+        if(step.contains("freeze")) {
+            String cb = request.getParameter("PAcb1").trim();
+            String sitepath = request.getParameter("PAsitepath1").trim();
+            String superior = request.getParameter("PAloginname1").trim();
+
+            map.put("cb" ,cb);
+            map.put("sitepath" ,sitepath);
+            map.put("superior" ,superior);
+            selectSql += platformAccount.freeze(map);
+        }
+
+        PrintWriter out = response.getWriter();
+        selectSql += "</code></pre>";
+        out.write(selectSql);
+        out.close();
+    }
     /**
      * CB - 代理线未登入 / 未投注
      *
@@ -58,7 +114,6 @@ public class HelloWorldServlet extends HttpServlet {
         response.setHeader("Content-type", "text/html;charset=UTF-8");//告知浏览器编码方式;
         response.setCharacterEncoding("UTF-8"); //向前台的页面输出结果的输出流
         Map<String, Object> map = new HashMap<>();
-
         String step = request.getParameter("step");
         step = step.replace("proxyLine", "").toLowerCase();
         String selectSql = "";
@@ -74,9 +129,6 @@ public class HelloWorldServlet extends HttpServlet {
             String dateStart = request.getParameter("date5S").trim();
             String dateEnd = request.getParameter("date5E").trim();
 
-            // vip ,dateStart ,dateEnd 還沒寫sql
-            System.out.println("dateStart>"+dateStart);
-
             map.put("cb", cb);
             map.put("sitepath", sitepath);
             map.put("superior", superior);
@@ -89,7 +141,25 @@ public class HelloWorldServlet extends HttpServlet {
             selectSql += proxyLine.selectNotBet(map);
 
         } else if (step.contains("notlogin")) {
+            String cb = request.getParameter("cb4").trim();
+            String sitepath = request.getParameter("sitepath4").trim();
+            String superior = request.getParameter("superior4").trim();
+            String vip = request.getParameter("vip4").trim();
+            String dateMinusMonth = request.getParameter("date4M").trim();
+            String dateMinusDay = request.getParameter("date4D").trim();
+            String dateStart = request.getParameter("date4S").trim();
+            String dateEnd = request.getParameter("date4E").trim();
 
+            map.put("cb", cb);
+            map.put("sitepath", sitepath);
+            map.put("superior", superior);
+            map.put("vip", vip);
+            map.put("dateMinusMonth", dateMinusMonth);
+            map.put("dateMinusDay", dateMinusDay);
+            map.put("dateStart", dateStart);
+            map.put("dateEnd", dateEnd);
+
+            selectSql += proxyLine.selectNotLogin(map);
         }
 
         PrintWriter out = response.getWriter();
@@ -110,7 +180,6 @@ public class HelloWorldServlet extends HttpServlet {
         response.setHeader("Content-type", "text/html;charset=UTF-8");//告知浏览器编码方式;
         response.setCharacterEncoding("UTF-8"); //向前台的页面输出结果的输出流
         Map<String, Object> map = new HashMap<>();
-
         String step = request.getParameter("step");
         step = step.replace("transferProxyLine", "").toLowerCase();
         String selectSql = "";
@@ -211,12 +280,16 @@ public class HelloWorldServlet extends HttpServlet {
         StringBuffer stringBuffer2 = new StringBuffer();
         stringBuffer.append("Map<String, Object> map = new HashMap<>();<br>");
         String type = "", parameter = "";
+//        System.out.println(paramString);
         if (paramString.contains(",")) {
 //            System.out.println(",>"+paramString);
             for (String s : paramString.split(",")) {
+//                System.out.println("s>"+s);
                 // 去頭尾空白
-                type = s.trim().split(" ")[0];
-                parameter = s.trim().split(" ")[1];
+                if(!s.trim().equals("")){
+                    type = s.trim().split(" ")[0];
+                    parameter = s.trim().split(" ")[1];
+                }
                 stringBuffer.append("map.put(\"" + parameter + "\" ," + parameter + ");<br>");
                 stringBuffer2.append(type + " " + parameter + " = (" + type + ") map.get(\"" + parameter + "\");<br>");
             }
@@ -225,9 +298,11 @@ public class HelloWorldServlet extends HttpServlet {
             String str1 = "";
             for (String s : paramString.split(";")) {
                 // 去頭尾空白
-                str1 = s.trim().split("=")[0];
-                type = str1.trim().split(" ")[0];
-                parameter = str1.trim().split(" ")[1];
+                if(!s.trim().equals("")){
+                    str1 = s.trim().split("=")[0];
+                    type = str1.trim().split(" ")[0];
+                    parameter = str1.trim().split(" ")[1];
+                }
                 stringBuffer.append("map.put(\"" + parameter + "\" ," + parameter + ");<br>");
                 stringBuffer2.append(type + " " + parameter + " = (" + type + ") map.get(\"" + parameter + "\");<br>");
             }
@@ -246,12 +321,17 @@ public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String step = request.getParameter("step");
+        System.out.println("doPost>"+step);
         if (step != null) {
             if (step.equals("isme")) {
                 isme(request, response);
             } else if (step.equals("adjust")) {
                 param2Map2paramStr(request, response);
-            } else if (step.contains("proxyLineNotBet")) {
+            } else if (step.contains("platformAccountFreeze")) {
+                platformAccountFreeze(request, response);
+            } else if (step.contains("memberAccountFreeze")) {
+                memberAccountFreeze(request, response);
+            } else if (step.contains("proxyLineNot")) {
                 proxyLineNot(request, response);
             } else if (step.contains("transferProxyLine")) {
                 transferProxyLine(request, response);

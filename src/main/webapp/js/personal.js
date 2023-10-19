@@ -1,16 +1,3 @@
-function showErrMsg(){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Get Some Help!',
-      backdrop: `
-          rgba(0,0,123,0.4)
-          left top
-          no-repeat
-        `
-    })
-}
-
 function showErrIPMsg(){
     Swal.fire({
       icon: 'error',

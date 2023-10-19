@@ -10,9 +10,12 @@ $(function(){
 $(".transferProxyLine_functionDescription").click(function(){
     var text = '<div style="margin-left: 30px;text-align: left;">'
 //    clear all: 清除所有 input 跟 sql<br>
+            +'10/12 08:40<br>'
             +'转移代理线-step1: 查询step2要用到的资讯<br>'
             +'转移代理线-step2: 更新代理相关资讯<br>'
             +'转移代理线-step3: 检查更新代理相关资讯是否正确<br>'
+            +'<br>'
+            +'10/18 08:40<br>'
             +'代理线底下未登入: 代理线xxx底下xx天未登入的下级账号的相关资讯<br>'
             +'代理线底下未投注: 代理线xxx底下xx天未投注的下级账号的相关资讯<br>'
             +'close: 关闭当前书签<br></div>';
@@ -36,64 +39,6 @@ $(".transferProxyLine_functionDescription_inside").click(function(){
     )
 });
 
-// msg 提示
-function showClearMsg(){
-    Swal.fire({
-      title: 'Clear!',
-      padding: '3em',
-      color: '#716add',
-      timer: 1000,
-      backdrop: `
-        rgba(0,0,123,0.4)
-        left top
-        no-repeat
-      `
-    })
-}
-
-function showCopyMsg(){
-    Swal.fire({
-      title:'Good job!',
-      text:'You copied this text!',
-      icon:'success',
-      backdrop: `
-        rgba(0,0,123,0.4)
-        left top
-        no-repeat
-      `
-    })
-}
-
-// 檢查空值
-function dataCheck(data){
-    var isCheck = true;
-    for (var key in data) {
-        if(data[key].includes("step")){
-            continue;
-        }else if(data[key].trim() === ''){
-            showErrMsg();
-            isCheck = false;
-            $("#"+key).css("background-color","#D6D6FF");
-        }else {
-            $("#"+key).css("background-color","white");
-        }
-    }
-    return isCheck;
-}
-
-function showErrMsg(){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Get Some Help!',
-      backdrop: `
-          rgba(0,0,123,0.4)
-          left top
-          no-repeat
-        `
-    })
-}
-
 // 当前书签的 copy 跟 clear
 for(var i=1;i<=5;i++){
     /**
@@ -114,22 +59,6 @@ for(var i=1;i<=5;i++){
             $('.proxyLine'+index+'Div input').val('');
         });
     })(i);
-}
-
-// copy
-function selectText(e){
-    var text = document.getElementById(e);
-    if (document.body.createTextRange) {
-        var range = document.body.createTextRange(); //获取range
-        range.moveToElementText(text); //光标移上去
-        range.select();  //选择
-    } else if (window.getSelection) {
-        var selection = window.getSelection(); //获取selection
-        var range = document.createRange(); //创建range
-        range.selectNodeContents(text);  //选择节点内容
-        selection.removeAllRanges(); //移除所有range
-        selection.addRange(range);  //添加range
-    }
 }
 
 $("#clearall").click(function(){
@@ -168,7 +97,6 @@ $("#test3").click(function(){
     $("#superior3").val('flcp2023');
     $("#subordinate3").val('flc001');
 });
-
 
 // sql
 $("#transferProxyLineStep1").click(function(){
