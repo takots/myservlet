@@ -133,7 +133,7 @@ $("#proxyLineNotLogin").click(function(){
     if(dataCheckProxyLine(data)){
         $.ajax({
             type: "POST",
-            url: "/proxy",
+            url: "/cb",
             data: data,
             dataType: "HTML",
             success: function(result){
@@ -163,7 +163,7 @@ $("#proxyLineNotBet").click(function(){
     if(dataCheckProxyLine(data)){
         $.ajax({
             type: "POST",
-            url: "/proxy",
+            url: "/cb",
             data: data,
             dataType: "HTML",
             success: function(result){

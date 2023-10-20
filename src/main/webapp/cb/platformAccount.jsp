@@ -44,4 +44,4 @@
       </div>
   </div>
 </div>
-<script src="js/platformAccount.js"></script>
+<script src="cb/js/platformAccount.js"></script>

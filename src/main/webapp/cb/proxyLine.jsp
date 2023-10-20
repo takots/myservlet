@@ -88,4 +88,4 @@
         </div>
     </div>
 </div>
-<script src="js/proxyLine.js"></script>
+<script src="cb/js/proxyLine.js"></script>

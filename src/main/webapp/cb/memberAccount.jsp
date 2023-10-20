@@ -40,4 +40,4 @@
       </div>
   </div>
 </div>
-<script src="js/memberAccount.js"></script>
+<script src="cb/js/memberAccount.js"></script>

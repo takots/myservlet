@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<link  rel="stylesheet" type="text/css" href="css/transferProxyLine.css">
 <div class="tab">
 <div>CB - 代理线</div>
   <button class="transferProxyLine_functionDescription tablinks" type="button">功能说明</button>
@@ -98,4 +97,4 @@
     </div>
 </div>
 <jsp:include page="proxyLine.jsp" />
-<script src="js/transferProxyLine.js"></script>
+<script src="cb/js/transferProxyLine.js"></script>

@@ -1,4 +1,4 @@
-package controller;
+package cb;
 
 import java.util.Map;
 
@@ -24,7 +24,7 @@ public class MemberAccount {
                 "```sql\n" +
                 "-- sql1 id = PLATFORM_ID\n" +
                 "SELECT id FROM PUB_SITE ps WHERE SITE_PATH = '" + sitepath + "'\n" +
-                "\n\n" +
+                "\n" +
                 "SELECT * FROM AUTH_ACCOUNT_EDIT_LOG l\n" +
                 "WHERE 1=1\n" +
                 "\tAND l.ACCOUNT_ID = (\n" +

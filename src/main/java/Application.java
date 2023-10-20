@@ -1,12 +1,13 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Abc {
-    private static final Logger logger = LogManager.getLogger(Abc.class);
+public class Application {
+    private static final Logger logger = LogManager.getLogger(Application.class);
 
     public static void main(String[] args) {
-//        Abc abc = new Abc();
-//        abc.test1();
+//        Application a = new Application();
+//        a.test1();
+        // 只有main方法的時候有寫myapp.log
         logger.info("aaa is {}","aaa");
     }
     public void test1(){
