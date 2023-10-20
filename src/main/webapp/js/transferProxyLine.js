@@ -1,5 +1,5 @@
 $(function(){
-    for(var i=1;i<=3;i++){
+    for(var i=1;i<=5;i++){
         if ($("#selectSql"+i).text().trim() === "") {
             $("#copy"+i).hide();
         }
@@ -8,7 +8,17 @@ $(function(){
 
 // 功能说明
 $(".transferProxyLine_functionDescription").click(function(){
-    var text = '<div style="margin-left: 70px;text-align: left;">clear all: 清除所有 input 跟 sql<br>step1: 查询step2要用到的资讯<br>step2: 更新代理相关资讯<br>step3: 检查更新代理相关资讯是否正确<br>close: 关闭当前书签<br></div>';
+    var text = '<div style="margin-left: 30px;text-align: left;">'
+//    clear all: 清除所有 input 跟 sql<br>
+            +'10/12 08:40<br>'
+            +'转移代理线-step1: 查询step2要用到的资讯<br>'
+            +'转移代理线-step2: 更新代理相关资讯<br>'
+            +'转移代理线-step3: 检查更新代理相关资讯是否正确<br>'
+            +'<br>'
+            +'10/18 08:40<br>'
+            +'代理线底下未登入: 代理线xxx底下xx天未登入的下级账号的相关资讯<br>'
+            +'代理线底下未投注: 代理线xxx底下xx天未投注的下级账号的相关资讯<br>'
+            +'close: 关闭当前书签<br></div>';
     Swal.fire(
       '',
       text,
@@ -17,7 +27,11 @@ $(".transferProxyLine_functionDescription").click(function(){
 });
 
 $(".transferProxyLine_functionDescription_inside").click(function(){
-    var text = '<div style="margin-left: 70px;text-align: left;">clear: 清除当前书签 input 跟 sql<br>带入测试值: 带入测试值<br>go: 产生sql<br>copy: 克隆sql<br></div>';
+    var text = '<div style="margin-left: 70px;text-align: left;">'
+            +'clear: 清除当前书签 input 跟 sql<br>'
+            +'带入测试值: 带入测试值<br>'
+            +'go: 产生sql<br>'
+            +'copy: 克隆sql<br></div>';
     Swal.fire(
       '',
       text,
@@ -25,66 +39,8 @@ $(".transferProxyLine_functionDescription_inside").click(function(){
     )
 });
 
-// msg 提示
-function showClearMsg(){
-    Swal.fire({
-      title: 'Clear!',
-      padding: '3em',
-      color: '#716add',
-      timer: 1000,
-      backdrop: `
-        rgba(0,0,123,0.4)
-        left top
-        no-repeat
-      `
-    })
-}
-
-function showCopyMsg(){
-    Swal.fire({
-      title:'Good job!',
-      text:'You copied this text!',
-      icon:'success',
-      backdrop: `
-        rgba(0,0,123,0.4)
-        left top
-        no-repeat
-      `
-    })
-}
-
-// 檢查空值
-function dataCheck(data){
-    var isCheck = true;
-    for (var key in data) {
-        if(data[key].includes("step")){
-            continue;
-        }else if(data[key].trim() === ''){
-            showErrMsg();
-            isCheck = false;
-            $("#"+key).css("background-color","#D6D6FF");
-        }else {
-            $("#"+key).css("background-color","white");
-        }
-    }
-    return isCheck;
-}
-
-function showErrMsg(){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Get Some Help!',
-      backdrop: `
-          rgba(0,0,123,0.4)
-          left top
-          no-repeat
-        `
-    })
-}
-
 // 当前书签的 copy 跟 clear
-for(var i=1;i<=3;i++){
+for(var i=1;i<=5;i++){
     /**
      * 使用 IIFE (立即执行函数表达式) 捕获了每次迭代的 i 值，将其传递给匿名函数，从而在每个按钮点击事件处理程序中使用正确的 i 值。
      * 这将确保每个按钮都能正常工作，而不会受到闭包的影响。
@@ -100,33 +56,16 @@ for(var i=1;i<=3;i++){
             $("#selectSql"+index).html('');
             $("#copy"+index).hide();
             $('.step'+index+'Div input').val('');
+            $('.proxyLine'+index+'Div input').val('');
         });
     })(i);
 }
 
-// copy
-function selectText(e){
-    var text = document.getElementById(e);
-    if (document.body.createTextRange) {
-        var range = document.body.createTextRange(); //获取range
-        range.moveToElementText(text); //光标移上去
-        range.select();  //选择
-    } else if (window.getSelection) {
-        var selection = window.getSelection(); //获取selection
-        var range = document.createRange(); //创建range
-        range.selectNodeContents(text);  //选择节点内容
-        selection.removeAllRanges(); //移除所有range
-        selection.addRange(range);  //添加range
-    }
-}
-
 $("#clearall").click(function(){
-    $("#selectSql1").html('');
-    $("#copy1").hide();
-    $("#selectSql2").html('');
-    $("#copy2").hide();
-    $("#selectSql3").html('');
-    $("#copy3").hide();
+    for(var i=1;i<=3;i++){
+        $("#selectSql"+i).html('');
+        $("#copy"+i).hide();
+    }
     $('input').val('').css("background-color","white");
     showClearMsg();
     openTabs(event, '');
@@ -159,11 +98,10 @@ $("#test3").click(function(){
     $("#subordinate3").val('flc001');
 });
 
-
 // sql
-$("#step1").click(function(){
+$("#transferProxyLineStep1").click(function(){
     var data = {
-        step: "step1",
+        step: "transferProxyLineStep1",
         cb1: $("#cb1").val(),
         sitepath1: $("#sitepath1").val(),
         superior1: $("#superior1").val(),
@@ -186,9 +124,9 @@ $("#step1").click(function(){
     }
 });
 
-$("#step2").click(function(){
+$("#transferProxyLineStep2").click(function(){
     var data = {
-        step: "step2",
+        step: "transferProxyLineStep2",
         cb2: $("#cb2").val(),
         sitepath2: $("#sitepath2").val(),
         accountNamePath: $("#accountNamePath").val(),
@@ -216,9 +154,9 @@ $("#step2").click(function(){
     }
 });
 
- $("#step3").click(function(){
+ $("#transferProxyLineStep3").click(function(){
      var data = {
-        step: "step3",
+        step: "transferProxyLineStep3",
         cb3: $("#cb3").val(),
         sitepath3: $("#sitepath3").val(),
         superior3: $("#superior3").val(),

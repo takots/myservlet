@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link  rel="stylesheet" type="text/css" href="css/transferProxyLine.css">
 <div class="tab">
-<div>CB - 转移代理线</div>
+<div>CB - 代理线</div>
   <button class="transferProxyLine_functionDescription tablinks" type="button">功能说明</button>
-  <button class="tablinks" id="clearall" type="button">clear all</button>
-  <button class="tablinks" onclick="openTabs(event, 'transferProxyLine_tab1')">step1</button>
-  <button class="tablinks" onclick="openTabs(event, 'transferProxyLine_tab2')">step2</button>
-  <button class="tablinks" onclick="openTabs(event, 'transferProxyLine_tab3')">step3</button>
+  <!--<button class="tablinks" id="clearall" type="button">clear all</button>-->
+  <button class="tablinks" onclick="openTabs(event, 'transferProxyLine_tab1')">转移代理线-step1</button>
+  <button class="tablinks" onclick="openTabs(event, 'transferProxyLine_tab2')">转移代理线-step2</button>
+  <button class="tablinks" onclick="openTabs(event, 'transferProxyLine_tab3')">转移代理线-step3</button>
+  <button class="tablinks" onclick="openTabs(event, 'proxyLine_tab4')">代理线底下未登入</button>
+  <button class="tablinks" onclick="openTabs(event, 'proxyLine_tab5')">代理线底下未投注</button>
   <button class="tablinks" onclick="openTabs(event, '')">close</button>
 </div>
 
@@ -27,7 +29,7 @@
           <div class="form-group row"><label class="col-sm-2 col-form-label">下级:               </label><input type="text" name="subordinate" id="subordinate1"><br></div>
       </div>
       <div class="col">
-          <div class="form-group row"><button id="step1" type="button" class="btn btn-primary mb-1">go</button></div>
+          <div class="form-group row"><button id="transferProxyLineStep1" type="button" class="btn btn-primary mb-1">go</button></div>
       </div>
       <div class="border">
           <button id="copy1" type="button" class="btn btn-primary mb-1">copy</button><br>
@@ -61,7 +63,7 @@
           <div class="form-group row"><label class="col-sm-2 col-form-label">下级ID:                </label><input type="text" name="subordinateId" id="subordinateId"><br></div>
       </div>
       <div class="col">
-          <div class="form-group row"><button id="step2" type="button" class="btn btn-primary mb-1">go</button></div>
+          <div class="form-group row"><button id="transferProxyLineStep2" type="button" class="btn btn-primary mb-1">go</button></div>
       </div>
       <div class="border">
           <button id="copy2" type="button" class="btn btn-primary mb-1">copy</button><br>
@@ -87,7 +89,7 @@
             <div class="form-group row"><label class="col-sm-2 col-form-label">下级:               </label><input type="text" name="subordinate" id="subordinate3"><br></div>
         </div>
         <div class="col">
-            <div class="form-group row"><button id="step3" type="button" class="btn btn-primary mb-1">go</button></div>
+            <div class="form-group row"><button id="transferProxyLineStep3" type="button" class="btn btn-primary mb-1">go</button></div>
         </div>
         <div class="border">
             <button id="copy3" type="button" class="btn btn-primary mb-1">copy</button><br>
@@ -95,4 +97,5 @@
         </div>
     </div>
 </div>
+<jsp:include page="proxyLine.jsp" />
 <script src="js/transferProxyLine.js"></script>

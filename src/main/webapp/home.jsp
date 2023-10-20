@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/openTabs.js"></script>
+    <script src="js/home.js"></script>
     <link  rel="stylesheet" type="text/css" href="css/tabs.css">
     <title>stopitgetsomehelp</title>
 </head>
@@ -27,6 +28,8 @@ boolean isme = someCookie.checkCookie(request, response);
     <jsp:include page="personal.jsp" />
 <%}%>
 <jsp:include page="transferProxyLine.jsp" />
+<jsp:include page="platformAccount.jsp" />
+<jsp:include page="memberAccount.jsp" />
 <jsp:include page="codeAdjust.jsp" />
 </body>
 </html>

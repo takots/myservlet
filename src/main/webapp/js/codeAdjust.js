@@ -5,36 +5,6 @@ $(function(){
     }
 })
 
-function showCopyMsg(){
-    Swal.fire({
-      title:'Good job!',
-      text:'You copied this text!',
-      icon:'success',
-      backdrop: `
-        rgba(0,0,123,0.4)
-        left top
-        no-repeat
-      `
-    })
-}
-
-// 檢查空值
-function dataCheck(data){
-    var isCheck = true;
-    for (var key in data) {
-        if(data[key].includes("step")){
-            continue;
-        }else if(data[key].trim() === ''){
-            showErrMsg();
-            isCheck = false;
-            $("#"+key).css("background-color","#D6D6FF");
-        }else {
-            $("#"+key).css("background-color","white");
-        }
-    }
-    return isCheck;
-}
-
 $("#adjustCopy1").click(function(){
     selectText("adjustSql1");
     document.execCommand('copy');
@@ -49,9 +19,15 @@ $("#adjustClear1").click(function(){
 
 // 带入测试值
 $("#adjustTest1").click(function(){
-    $("#adjustStr").val(' int page, int pageSize,&nbsp;&nbsp;'
-                              +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String createDatTime, String createDatTimeEnd, Integer accountId,String loteryId,String cpLoteryId&nbsp;&nbsp;&nbsp;'
-                              +'&nbsp;&nbsp;&nbsp;,String status,boolean isNew,Integer lastId,String tradeType');
+    $("#adjustStr").val(' int page, int pageSize,'
+                              +'          ,String createDatTime, String createDatTimeEnd, Integer accountId,String loteryId,String cpLoteryId'
+                              +'              , String status,boolean isNew,Integer lastId,String tradeType');
+});
+$("#adjustTest2").click(function(){
+    $("#adjustStr").val(' String customSettingId = request.getParameter("customSettingId");'
+                                  		+'           ;; String remarks = request.getParameter("remarks").trim();'
+                                  		+'            String result = request.getParameter("result");'
+                                  		+'          String ids = request.getParameter("ids");');
 });
 
 $("#adjust").click(function(){

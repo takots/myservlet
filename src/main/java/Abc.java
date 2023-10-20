@@ -1,7 +1,13 @@
-public class main123 {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class Abc {
+    private static final Logger logger = LogManager.getLogger(Abc.class);
+
     public static void main(String[] args) {
-        main123 m = new main123();
-        m.test1();
+//        Abc abc = new Abc();
+//        abc.test1();
+        logger.info("aaa is {}","aaa");
     }
     public void test1(){
         String paramString = "int page, int pageSize,\n" +

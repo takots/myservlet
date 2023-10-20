@@ -1,7 +1,7 @@
-[class^="row"] {
+[class^="randomRow"] {
     margin-bottom: 10px;
 }
-[class^="randombox"] {
+[class^="randomBox"] {
     line-height: 50px;
     text-align: center;
     width: 50px;

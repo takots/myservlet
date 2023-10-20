@@ -4,8 +4,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SomeCookie {
+    private static final Logger logger = LogManager.getLogger(SomeCookie.class);
+
+    GetIp getIp = new GetIp();
     /**
      * 獲取cookie 目前只有 isme 這個cookie
      * @param request
@@ -20,7 +25,8 @@ public class SomeCookie {
             for (Cookie cookie : cookies) {
                 if ("isme".equals(cookie.getName())) {
                     String username = cookie.getValue();
-                    if ("bobwu".equals(username)) {
+                    logger.info("checkCookie ip is {}",getIp.getLocalIP());
+                    if (getIp.getLocalIP().equals(username)) {
                         isme = true;
                     }
                 }
