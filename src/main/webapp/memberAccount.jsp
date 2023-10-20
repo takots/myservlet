@@ -6,8 +6,8 @@
 </div>
 
 <div id="memberAccount_tab1" class="tabcontent">
-  <h3 id="freezeReason1">冻结原因1: 連續輸入錯誤被凍結</h3>
-  <div class="closeSearch1Div">
+  <h3 id="MAfreezeReason1">冻结原因1: 連續輸入錯誤被凍結</h3>
+  <div class="MAcloseSearch1Div">
        <div class="border">
           <button id="MAclear1" type="button" class="btn btn-danger mb-1">clear</button>
           <button id="MAtest1" type="button" class="btn btn-primary mb-1">带入测试值</button><br>
@@ -19,6 +19,7 @@
             欄位:<br>
             </div>
             <div class="border form-group row">
+            回覆:<br>
                 2018/05/31 14:56:33<br>
                 连续登录失败超过6次，账号已被冻结
             </div>

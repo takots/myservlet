@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <!-- 配置一个将日志信息输出到控制台的 Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %p %c{1.} [%t] %m%n"/>
+        </Console>
+
+        <!-- 可以同时配置其他 Appenders，如输出到文件 -->
+        <!-- 配置一个将日志信息输出到文件的 Appender -->
+        <File name="File" fileName="Wisdomcourage/logs/myapp-${date:yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d %p %c{1.} [%t] %m%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <!-- 将日志信息添加到 Console Appender -->
+            <AppenderRef ref="Console"/>
+            <!-- 将日志信息添加到 File Appender -->
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>

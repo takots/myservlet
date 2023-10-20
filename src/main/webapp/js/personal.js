@@ -18,11 +18,11 @@ function hiddenShow(){
 
 $("#fixedBtn").click(function(){
     Swal.fire({
-      title: '輸入',
+      title: '',
       input: 'text',
       padding: '3em',
       color: '#716add',
-      timer: 1000,
+      timer: 6000,
       backdrop: `
         rgba(0,0,123,0.4)
         left top

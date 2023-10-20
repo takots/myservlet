@@ -26,14 +26,14 @@ function box(){
     for(var i = 0 ; i< n ; i++){
         if(i % 5 == 0){
             row++;
-            var $rowdiv = $("<div></div>")
-                            .addClass("row" + row);
-            $(".randomDiv").append($rowdiv);
+            var $randomRowdiv = $("<div></div>").addClass("randomRow" + row);
+            $(".randomDiv").append($randomRowdiv);
         }
 
+        // 將隨機數存到一個陣列中，以防重複
         randomInt = noRepeatRandomNumber();
-        var $div = $("<div></div>")
-            .addClass("randombox" + randomInt + " default-bg")
+        var $randomBox = $("<div></div>")
+            .addClass("randomBox" + randomInt + " default-bg")
             .text(randomInt)
             .click(function() {
                 $(this).toggleClass("default-bg clicked-bg"); // 切换类
@@ -43,13 +43,13 @@ function box(){
                     countdownStart();
                 }
             });
-        $rowdiv.append($div);
+        $randomRowdiv.append($randomBox);
     }
 }
 
 function clearBoxRestart(){
-    $("div[class*='row']").remove();
-    $("div[class*='randombox']").remove();
+    $("div[class*='randomRow']").remove();
+    $("div[class*='randomBox']").remove();
     box();
     $("#timer").text(10);
 }

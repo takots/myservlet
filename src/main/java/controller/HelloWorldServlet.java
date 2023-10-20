@@ -1,12 +1,13 @@
 package controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import tool.GetIp;
 import tool.SomeCookie;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 @WebServlet("/proxy")//打在網頁根目錄後
 public class HelloWorldServlet extends HttpServlet {
+    private static final Logger logger = LogManager.getLogger(HelloWorldServlet.class);
     TransferProxyLine transferProxyLine = new TransferProxyLine();
     ProxyLine proxyLine = new ProxyLine();
 
@@ -26,8 +28,7 @@ public class HelloWorldServlet extends HttpServlet {
     SomeCookie someCookie = new SomeCookie();
 
     /**
-     * 判斷是我ip
-     *
+     * ip
      * @param request
      * @param response
      * @throws IOException
@@ -36,13 +37,15 @@ public class HelloWorldServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String password = request.getParameter("password").trim();
         if (password.equals("qwe123")) {
-            if (!"10.252.1.149".equals(getIp.getLocalIP())) {
-                out.write("ipno");
-            } else {
-                someCookie.setCookie("isme", "bobwu", 600, response);
+            // 比對本地
+//            if (!"10.252.1.149".equals(getIp.getLocalIP())) {
+//                out.write("ipno");
+//            } else {
+                logger.info("hello ip is {}",getIp.getLocalIP());
+                someCookie.setCookie("isme", getIp.getLocalIP(), 600, response);
                 response.setHeader("Refresh", "1;URL=home.jsp");
                 out.write("sus");
-            }
+//            }
         } else {
             out.write("run");
         }
@@ -321,7 +324,7 @@ public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String step = request.getParameter("step");
-        System.out.println("doPost>"+step);
+        logger.info("doPost step is {}",step);
         if (step != null) {
             if (step.equals("isme")) {
                 isme(request, response);
