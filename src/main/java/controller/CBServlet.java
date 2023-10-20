@@ -27,6 +27,7 @@ public class CBServlet extends HttpServlet {
     ProxyLine proxyLine = new ProxyLine();
     PlatformAccount platformAccount = new PlatformAccount();
     MemberAccount memberAccount = new MemberAccount();
+
     private void memberAccountFreeze(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");//对返回浏览器数据没啥用，不过建议添加
         response.setHeader("Content-type", "text/html;charset=UTF-8");//告知浏览器编码方式;
@@ -37,14 +38,14 @@ public class CBServlet extends HttpServlet {
         String selectSql = "";
         selectSql = "<pre><code&nbsp;class=\"sql-code\">";
 
-        if(step.contains("freeze")) {
+        if (step.contains("freeze")) {
             String cb = request.getParameter("MAcb1").trim();
             String sitepath = request.getParameter("MAsitepath1").trim();
             String superior = request.getParameter("MAloginname1").trim();
 
-            map.put("cb" ,cb);
-            map.put("sitepath" ,sitepath);
-            map.put("superior" ,superior);
+            map.put("cb", cb);
+            map.put("sitepath", sitepath);
+            map.put("superior", superior);
             selectSql += memberAccount.freeze(map);
         }
 
@@ -64,14 +65,14 @@ public class CBServlet extends HttpServlet {
         String selectSql = "";
         selectSql = "<pre><code&nbsp;class=\"sql-code\">";
 
-        if(step.contains("freeze")) {
+        if (step.contains("freeze")) {
             String cb = request.getParameter("PAcb1").trim();
             String sitepath = request.getParameter("PAsitepath1").trim();
             String superior = request.getParameter("PAloginname1").trim();
 
-            map.put("cb" ,cb);
-            map.put("sitepath" ,sitepath);
-            map.put("superior" ,superior);
+            map.put("cb", cb);
+            map.put("sitepath", sitepath);
+            map.put("superior", superior);
             selectSql += platformAccount.freeze(map);
         }
 
@@ -80,6 +81,7 @@ public class CBServlet extends HttpServlet {
         out.write(selectSql);
         out.close();
     }
+
     /**
      * CB - 代理线未登入 / 未投注
      *
@@ -250,7 +252,7 @@ public class CBServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String step = request.getParameter("step");
-        logger.info("CBServlet: {}",step);
+        logger.info("CBServlet: {}", step);
         if (step != null) {
             if (step.contains("platformAccountFreeze")) {
                 platformAccountFreeze(request, response);
@@ -261,6 +263,11 @@ public class CBServlet extends HttpServlet {
             } else if (step.contains("transferProxyLine")) {
                 transferProxyLine(request, response);
             }
+//        } else {
+            //java.lang.IllegalStateException: Cannot forward after response has been committed
+//            response.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
+        dispatcher.forward(request, response);
     }
 }

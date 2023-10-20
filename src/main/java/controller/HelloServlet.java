@@ -107,9 +107,8 @@ public class HelloServlet  extends HttpServlet {
             } else if (step.equals("adjust")) {
                 param2Map2paramStr(request, response);
             }
-        } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
-            dispatcher.forward(request, response);
         }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
+        dispatcher.forward(request, response);
     }
 }
