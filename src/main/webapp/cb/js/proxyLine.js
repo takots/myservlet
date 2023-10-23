@@ -15,9 +15,12 @@ function dateNeedMinus(minus,day){
     return year + '-' + month + '-' + day;
 }
 
-$("#clearRangeDate").click(function(){
+$("#clearRangeDate4").click(function(){
     $("#date4S").val('');
     $("#date4E").val('');
+})
+
+$("#clearRangeDate5").click(function(){
     $("#date5S").val('');
     $("#date5E").val('');
 })
@@ -133,7 +136,7 @@ $("#proxyLineNotLogin").click(function(){
     if(dataCheckProxyLine(data)){
         $.ajax({
             type: "POST",
-            url: "/proxy",
+            url: "/cb",
             data: data,
             dataType: "HTML",
             success: function(result){
@@ -163,7 +166,7 @@ $("#proxyLineNotBet").click(function(){
     if(dataCheckProxyLine(data)){
         $.ajax({
             type: "POST",
-            url: "/proxy",
+            url: "/cb",
             data: data,
             dataType: "HTML",
             success: function(result){

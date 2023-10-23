@@ -9,3 +9,4 @@
      - 大部分的 class 都是 row
   - 照順序按才給按 檢查數字-1
   - 一個div放紀錄 div並排
+  - servlet 沒有寫 myapp.log

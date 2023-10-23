@@ -1,0 +1,28 @@
+.border{
+  border: 2px solid black;
+  margin-left:20px;
+}
+.sql-code {
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-family: monospace;
+    border: 1px solid #ccc;
+}
+.toOtherPage{
+    width: 100px;
+    height: 40px;
+    padding: 10px 25px;
+    color: black;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid black;
+    transition: background-color 1s ease;
+    margin: 2px;
+}
+
+.toOtherPage:hover{
+    color: white;
+    background-color: #716add;
+    border: white;
+}

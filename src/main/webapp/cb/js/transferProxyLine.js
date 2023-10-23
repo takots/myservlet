@@ -110,7 +110,7 @@ $("#transferProxyLineStep1").click(function(){
     if(dataCheck(data)){
         $.ajax({
             type: "POST",
-            url: "/proxy",
+            url: "/cb",
             data: data,
             dataType: "HTML",
             success: function(result){
@@ -140,7 +140,7 @@ $("#transferProxyLineStep2").click(function(){
     if(dataCheck(data)){
         $.ajax({
             type: "POST",
-            url: "/proxy",
+            url: "/cb",
             data: data,
             dataType: "HTML",
             success: function(result){
@@ -165,7 +165,7 @@ $("#transferProxyLineStep2").click(function(){
     if(dataCheck(data)){
         $.ajax({
             type: "POST",
-            url: "/proxy",
+            url: "/cb",
             data: data,
             dataType: "HTML",
             success: function(result){
