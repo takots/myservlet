@@ -15,9 +15,12 @@ function dateNeedMinus(minus,day){
     return year + '-' + month + '-' + day;
 }
 
-$("#clearRangeDate").click(function(){
+$("#clearRangeDate4").click(function(){
     $("#date4S").val('');
     $("#date4E").val('');
+})
+
+$("#clearRangeDate5").click(function(){
     $("#date5S").val('');
     $("#date5E").val('');
 })

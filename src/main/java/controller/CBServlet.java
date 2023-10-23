@@ -263,11 +263,8 @@ public class CBServlet extends HttpServlet {
             } else if (step.contains("transferProxyLine")) {
                 transferProxyLine(request, response);
             }
-//        } else {
-            //java.lang.IllegalStateException: Cannot forward after response has been committed
-//            response.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cb/cb.jsp");
         dispatcher.forward(request, response);
     }
 }

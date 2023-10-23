@@ -15,30 +15,19 @@
     <script src="js/home.js"></script>
     <link  rel="stylesheet" type="text/css" href="css/home.css">
     <link  rel="stylesheet" type="text/css" href="css/tabs.css">
-    <title>stopitgetsomehelp</title>
+    <title>cb</title>
 </head>
 <body>
-<%
-SomeCookie someCookie = new SomeCookie();
-boolean isme = someCookie.checkCookie(request, response);
-%>
 <div class="col">
     <div class="row">
         <div class="form-group col-1" style="background-color:#f1f1f1;">
-        <!--
-            target= _blank 新分頁
-            target= _self  相同頁面
-        -->
-            <a href="cb" target="_self" class="btn toOtherPage">cb</a><br>
+            <a href="proxy" target="_self" class="btn toOtherPage">back</a>
         </div>
         <div class="form-group col-11">
-            <%if(isme){%>
-                <jsp:include page="hidden.jsp" />
-            </div>
-            <%}else{%>
-                <jsp:include page="personal.jsp" />
-            <%}%>
-            <jsp:include page="codeAdjust.jsp" />
+            <!-- 同一層 include 不需要加 cb/xxx.jsp -->
+            <jsp:include page="transferProxyLine.jsp" />
+            <jsp:include page="platformAccount.jsp" />
+            <jsp:include page="memberAccount.jsp" />
         </div>
     </div>
 </div>

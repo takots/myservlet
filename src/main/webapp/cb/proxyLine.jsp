@@ -24,7 +24,7 @@
                     <label class="col-form-label">時間範圍2(區間):</label>
                 </div>
                 <div class="form-group col-1">
-                    <button id="clearRangeDate" type="button" class="btn btn-danger mb-1">clear Range</button>
+                    <button id="clearRangeDate4" type="button" class="btn btn-danger mb-1">clear Range</button>
                 </div>
                 <div class="form-group col-2">
                     <input type="date" class="form-control" id="date4S" name="date">
@@ -69,7 +69,7 @@
                     <label class="col-form-label">時間範圍2(區間):</label>
                 </div>
                 <div class="form-group col-1">
-                    <button id="clearRangeDate" type="button" class="btn btn-danger mb-1">clear Range</button>
+                    <button id="clearRangeDate5" type="button" class="btn btn-danger mb-1">clear Range</button>
                 </div>
                 <div class="form-group col-2">
                     <input type="date" class="form-control" id="date5S" name="date">
